@@ -1,0 +1,213 @@
+/* ── Reset básico ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: #0d9488; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ────────────────────────────────────────────────── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+header {
+  background: #1b2a4a;
+  color: #fff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+header h1 { font-size: 1.4rem; font-weight: 700; }
+
+header nav { display: flex; gap: 1.25rem; }
+header nav a {
+  color: #c8d0dc;
+  font-size: .95rem;
+  transition: color .2s;
+}
+header nav a:hover { color: #fff; text-decoration: none; }
+
+/* ── Main ──────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  padding: 2rem 1.25rem;
+}
+
+/* ── Alertas ───────────────────────────────────────────────── */
+.alerta {
+  padding: .75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  font-size: .93rem;
+}
+.alerta-ok   { background: #d1fae5; color: #065f46; border-left: 4px solid #10b981; }
+.alerta-erro { background: #fee2e2; color: #991b1b; border-left: 4px solid #dc2626; }
+
+/* ── Topo da lista ─────────────────────────────────────────── */
+.topo-lista {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.topo-lista h2 { font-size: 1.3rem; display: flex; align-items: center; gap: .5rem; }
+
+.badge {
+  background: #0d9488;
+  color: #fff;
+  border-radius: 999px;
+  font-size: .75rem;
+  padding: .15rem .55rem;
+  font-weight: 700;
+}
+
+/* ── Busca ─────────────────────────────────────────────────── */
+.busca {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.busca input {
+  padding: .45rem .75rem;
+  border: 1px solid #c8d0dc;
+  border-radius: 6px;
+  font-size: .92rem;
+  width: 220px;
+  outline: none;
+  transition: border-color .2s;
+}
+.busca input:focus { border-color: #0d9488; }
+
+.busca button {
+  background: #0d9488;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: .45rem .75rem;
+  cursor: pointer;
+  font-size: .92rem;
+}
+
+.btn-limpar {
+  font-size: .85rem;
+  color: #6b7280;
+}
+
+/* ── Tabela ────────────────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+thead { background: #1b2a4a; color: #fff; }
+th { padding: .75rem 1rem; text-align: left; font-size: .9rem; }
+td { padding: .75rem 1rem; font-size: .93rem; border-bottom: 1px solid #f0f2f5; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f8fafb; }
+
+.acoes { display: flex; gap: .5rem; align-items: center; }
+
+/* ── Vazio ─────────────────────────────────────────────────── */
+.vazio {
+  background: #fff;
+  border-radius: 10px;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #6b7280;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+/* ── Botões ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .35rem .75rem;
+  border-radius: 6px;
+  font-size: .85rem;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: opacity .15s;
+}
+.btn:hover { opacity: .85; text-decoration: none; }
+
+.btn-editar  { background: #f0f2f5; color: #1b2a4a; }
+.btn-deletar { background: #fee2e2; color: #991b1b; }
+.btn-novo    { background: #0d9488; color: #fff; margin-top: 1rem; }
+.btn-salvar  { background: #0d9488; color: #fff; padding: .6rem 1.4rem; font-size: .97rem; }
+.btn-cancelar{ background: #f0f2f5; color: #1b2a4a; padding: .6rem 1.2rem; font-size: .97rem; }
+
+/* ── Formulário ────────────────────────────────────────────── */
+.card-form {
+  background: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 520px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.card-form h2 { margin-bottom: 1.5rem; font-size: 1.2rem; }
+
+.campo { margin-bottom: 1.1rem; display: flex; flex-direction: column; gap: .35rem; }
+
+.campo label { font-size: .9rem; font-weight: 600; color: #374151; }
+
+.campo input {
+  padding: .55rem .8rem;
+  border: 1px solid #c8d0dc;
+  border-radius: 6px;
+  font-size: .95rem;
+  outline: none;
+  transition: border-color .2s;
+}
+.campo input:focus { border-color: #0d9488; }
+
+.obrigatorio { color: #dc2626; }
+
+.acoes-form { display: flex; gap: 1rem; margin-top: 1.5rem; align-items: center; }
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+  background: #1b2a4a;
+  color: #c8d0dc;
+  text-align: center;
+  padding: .9rem 0;
+  font-size: .82rem;
+}
+
+/* ── Responsivo ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .topo-lista { flex-direction: column; align-items: flex-start; }
+  .busca input { width: 160px; }
+  table { font-size: .85rem; }
+  th, td { padding: .55rem .65rem; }
+  .acoes { flex-direction: column; gap: .35rem; }
+}

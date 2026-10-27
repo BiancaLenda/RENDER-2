@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Contatos · Agenda{% endblock %}
+
+{% block content %}
+
+<section class="topo-lista">
+  <h2>Contatos <span class="badge">{{ contatos | length }}</span></h2>
+
+  <form class="busca" method="GET" action="{{ url_for('index') }}">
+    <input type="text" name="busca" placeholder="Buscar por nome…" value="{{ busca }}">
+    <button type="submit">🔍</button>
+    {% if busca %}
+      <a href="{{ url_for('index') }}" class="btn-limpar">✕ Limpar</a>
+    {% endif %}
+  </form>
+</section>
+
+{% if contatos %}
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in contatos %}
+      <tr>
+        <td><strong>{{ c.nome }}</strong></td>
+        <td>{{ c.email or '—' }}</td>
+        <td>{{ c.telefone or '—' }}</td>
+        <td class="acoes">
+          <a href="{{ url_for('editar', id=c.id) }}" class="btn btn-editar">✏️ Editar</a>
+          <form method="POST" action="{{ url_for('deletar', id=c.id) }}"
+                onsubmit="return confirm('Remover {{ c.nome }}?')">
+            <button type="submit" class="btn btn-deletar">🗑️ Remover</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="vazio">
+    {% if busca %}
+      <p>Nenhum contato encontrado para "<strong>{{ busca }}</strong>".</p>
+    {% else %}
+      <p>Nenhum contato cadastrado ainda.</p>
+      <a href="{{ url_for('novo') }}" class="btn btn-novo">+ Adicionar primeiro contato</a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% endblock %}
