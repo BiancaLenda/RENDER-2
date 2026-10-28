@@ -1,98 +1,44 @@
-# 📒 Agenda de Contatos
+# Catálogo de Filmes · UC32
 
-Aplicação web simples de agenda de contatos desenvolvida com **Python + Flask + SQLite**.
+Sistema CRUD feito com **Python (Flask)** e **SQLite**, publicado no **Render**.
 
-## 🚀 Funcionalidades
+## Funcionalidades
+- **Create**: cadastrar filme (título, gênero, ano e nota de 1 a 10)
+- **Read**: listar todos os filmes, com total e nota média
+- **Update**: editar um filme existente
+- **Delete**: excluir um filme (com confirmação)
 
-- ✅ Cadastrar novos contatos (nome, e-mail, telefone)
-- ✅ Listar todos os contatos
-- ✅ Buscar contato por nome
-- ✅ Editar contato existente
-- ✅ Remover contato
+O banco (`filmes.db`) é criado automaticamente ao iniciar o app.
 
-## 🛠️ Tecnologias
-
-| Tecnologia | Uso |
-|---|---|
-| Python 3 | Linguagem principal |
-| Flask | Framework web |
-| SQLite | Banco de dados |
-| HTML / CSS | Interface do usuário |
-| Jinja2 | Templates (engine do Flask) |
-
-## 📁 Estrutura do projeto
-
-```
-agenda-contatos/
-├── app.py                  # Aplicação principal (rotas e banco)
-├── requirements.txt        # Dependências do projeto
-├── .gitignore              # Arquivos ignorados pelo Git
-├── README.md               # Este arquivo
-├── static/
-│   └── css/
-│       └── style.css       # Estilos da interface
-└── templates/
-    ├── base.html           # Template base (header, footer)
-    ├── index.html          # Lista de contatos
-    └── form.html           # Formulário de cadastro/edição
-```
-
-## ▶️ Como executar localmente
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/seu-usuario/agenda-contatos.git
-cd agenda-contatos
-```
-
-### 2. Crie um ambiente virtual
-
+## Rodar localmente
 ```bash
 python -m venv venv
-```
-
-### 3. Ative o ambiente virtual
-
-**Windows:**
-```bash
-venv\Scripts\activate
-```
-
-**Linux / Mac:**
-```bash
-source venv/bin/activate
-```
-
-### 4. Instale as dependências
-
-```bash
+source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
-
-### 5. Execute a aplicação
-
-```bash
 python app.py
 ```
+Abra http://127.0.0.1:5000
 
-### 6. Acesse no navegador
-
+## Estrutura
 ```
-http://localhost:5000
+catalogo-filmes/
+├── app.py            # rotas e SQL
+├── requirements.txt
+├── Procfile
+├── static/style.css
+└── templates/
+    ├── base.html
+    ├── index.html
+    └── form.html
 ```
 
-O banco de dados (`agenda.db`) é criado automaticamente na primeira execução.
+## Deploy no Render
+1. Suba o projeto em um repositório no GitHub.
+2. No [render.com](https://render.com): **New → Web Service** e conecte o repositório.
+3. Preencha:
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `gunicorn app:app`
+4. Clique em **Deploy Web Service**.
 
-## 📸 Telas
-
-| Tela | Descrição |
-|---|---|
-| `/` | Lista de contatos com busca |
-| `/novo` | Formulário para adicionar contato |
-| `/editar/<id>` | Formulário para editar contato |
-
-## 👩‍💻 Autora
-
-Desenvolvido durante o curso **Técnico em Desenvolvimento de Sistemas**  
-MedTec · SENAC AR/RN · 2026
+> No Render gratuito o SQLite é temporário: os dados somem quando o serviço reinicia.
+> Isso é esperado para estudo e portfólio.
